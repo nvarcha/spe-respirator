@@ -5,9 +5,16 @@
 #ifndef VENTILATOR_VENTILATOR_H
 #define VENTILATOR_VENTILATOR_H
 
+#include "ElectroValve.h"
+#include "Debug.h"
 
 class Ventilator {
-
+public:
+    Ventilator(Debug *debug, Board *board);
+    ElectroValve *oxigen_intake;
+private:
+    Board *m_board;
+    Debug *m_debug;
 };
 
 

@@ -8,8 +8,19 @@ set(${PROJECT_NAME}_BOARD uno)
 project(${PROJECT_NAME})
 
 # Define additional source and header files or default arduino sketch files
- set(${PROJECT_NAME}_SRCS arduino.cpp classes/ElectroValve.cpp classes/Debug.cpp)
- set(${PROJECT_NAME}_HDRS classes/ElectroValve.h classes/Debug.h)
+ set(${PROJECT_NAME}_SRCS
+         arduino.cpp
+         classes/ElectroValve.cpp
+         classes/Debug.cpp
+         classes/Ventilator.cpp
+         classes/Board.cpp
+         )
+ set(${PROJECT_NAME}_HDRS
+         classes/ElectroValve.h
+         classes/Debug.h
+         classes/Ventilator.h
+         classes/Board.h
+         )
 
 ### Additional static libraries to include in the target.
 # set(${PROJECT_NAME}_LIBS)

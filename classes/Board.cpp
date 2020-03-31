@@ -3,3 +3,8 @@
 //
 
 #include "Board.h"
+#include "Arduino.h"
+
+void Board::setPinMode(int pin, int mode) {
+    pinMode(pin, mode);
+}

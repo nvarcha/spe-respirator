@@ -5,9 +5,11 @@
 #ifndef VENTILATOR_BOARD_H
 #define VENTILATOR_BOARD_H
 
+#include "Arduino.h"
 
 class Board {
-
+public:
+    void setPinMode(int pin, int mode);
 };
 
 
