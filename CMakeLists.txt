@@ -14,12 +14,14 @@ project(${PROJECT_NAME})
          classes/Debug.cpp
          classes/Ventilator.cpp
          classes/Board.cpp
+         classes/Pin.cpp
          )
  set(${PROJECT_NAME}_HDRS
          classes/ElectroValve.h
          classes/Debug.h
          classes/Ventilator.h
          classes/Board.h
+         classes/Pin.h
          )
 
 ### Additional static libraries to include in the target.

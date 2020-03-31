@@ -7,21 +7,17 @@
 
 #include "Board.h"
 #include "Debug.h"
+#include "Pin.h"
 
-class ElectroValve {
+class ElectroValve : public Pin {
 public:
-    ElectroValve(Debug *, Board *, const char *name, int pin, int mode);
-    void init();
+    ElectroValve(Debug *debug, Board *board, const char *name, int pin, int mode);
+    void init() override;
     void open();
     void close();
     bool isOpen();
 private:
-    Board *m_board;
-    Debug *m_debug;
     bool m_opened;
-    const char *m_name;
-    int m_pin;
-    int m_mode;
 };
 
 

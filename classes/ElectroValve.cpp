@@ -18,15 +18,13 @@ bool ElectroValve::isOpen() {
     return m_opened;
 }
 
-ElectroValve::ElectroValve(Debug *debug, Board *board, const char *name, int pin, int mode) {
-    m_name = name;
-    m_pin = pin;
-    m_mode = mode;
-    m_board = board;
-    m_debug = debug;
+void ElectroValve::init() {
+    m_debug->log(m_name);
+    m_debug->flog("Initializing Electrovalve %s", m_name);
+    Pin::m_board->setPinMode(m_pin, m_mode);
 }
 
-void ElectroValve::init() {
-    m_debug->log("Initializing Electrovalve");
-    m_board->setPinMode(m_pin, m_mode);
+ElectroValve::ElectroValve(Debug *debug, Board *board, const char *name, int pin, int mode) : Pin(debug, board, name,
+                                                                                                  pin, mode) {
+
 }

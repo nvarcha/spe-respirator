@@ -16,7 +16,8 @@
 class Debug {
     public:
         void initialize();
-        void log(const char *);
+        void log(const char *format);
+        void flog(const char *format, ...);
         void log(bool);
         void log(int);
 };

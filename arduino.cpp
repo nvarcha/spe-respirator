@@ -9,13 +9,15 @@ Ventilator ventilator(&debug, &board);
 //ElectroValve electroValve(&board, "O2 intake", 11, OUTPUT);
 
 /**
- * Arduino setup - run only once
+ * Arduino setup - runs only once
  * This is where everything begins, like the `main` function
  */
 void setup() {
     debug.initialize();
     debug.log("Initializing Ventilator Project - v0.1.0");
     debug.log("https://github.com/nvarcha/respirator");
+
+    ventilator.init();
 
     //ventilator.oxigen_intake = ElectroValve(&debug, &board, "O2 intake", 11, OUTPUT);
     // Configure the following pins as output pins

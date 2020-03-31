@@ -11,6 +11,7 @@
 class Ventilator {
 public:
     Ventilator(Debug *debug, Board *board);
+    void init();
     ElectroValve *oxigen_intake;
 private:
     Board *m_board;
