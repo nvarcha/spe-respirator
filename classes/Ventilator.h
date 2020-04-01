@@ -9,6 +9,7 @@
 #include "InputButton.h"
 #include "Debug.h"
 #include "StartStopInputButton.h"
+#include "AnalogInput.h"
 
 /**
  * Main Ventilator class. Represents the ventilator in its
@@ -26,6 +27,7 @@ public:
 
     // Parts
     ElectroValve *oxigen_intake;
+    AnalogInput *oxigen_intake_sensor;
     StartStopInputButton *start_stop;
 
 private:

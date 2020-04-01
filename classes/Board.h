@@ -16,6 +16,7 @@ public:
     void setAttachInterrupt(uint8_t pin, void (*callback)(), uint8_t event);
     bool isPinLow(uint8_t pin);
     void setDigitalWrite(uint8_t pin, uint8_t mode);
+    int getAnalogRead(uint8_t pin);
 
     /**
      * Delays execution (calls Arduino's delay)

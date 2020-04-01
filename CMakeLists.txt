@@ -17,6 +17,7 @@ project(${PROJECT_NAME})
          classes/Pin.cpp
          classes/InputButton.cpp
          classes/StartStopInputButton.cpp
+         classes/AnalogInput.cpp
          )
  set(${PROJECT_NAME}_HDRS
          classes/ElectroValve.h
@@ -26,6 +27,7 @@ project(${PROJECT_NAME})
          classes/Pin.h
          classes/InputButton.h
          classes/StartStopInputButton.h
+         classes/AnalogInput.h
          )
 
 ### Additional static libraries to include in the target.

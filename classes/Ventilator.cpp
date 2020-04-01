@@ -12,8 +12,9 @@
 Ventilator::Ventilator(Debug *debug, Board *board) {
     m_debug = debug;
     m_board = board;
-    oxigen_intake = NULL;
-    start_stop = NULL;
+    oxigen_intake = nullptr;
+    start_stop = nullptr;
+    oxigen_intake_sensor = nullptr;
 }
 
 /**
@@ -26,6 +27,9 @@ void Ventilator::init() {
 
     start_stop = new StartStopInputButton(m_debug, m_board, "Start/Stop", 2, INPUT_PULLUP);
     start_stop->init();
+
+    oxigen_intake_sensor = new AnalogInput(m_debug, m_board, "O2 intake Sensor", A5, INPUT);
+    oxigen_intake_sensor->init();
 }
 
 /**
@@ -41,4 +45,5 @@ void Ventilator::loop() {
     m_board->sleep(1000);
     oxigen_intake->close();
     m_board->sleep(1000);
+    m_debug->log("Intake: %d", oxigen_intake_sensor->getValue());
 }

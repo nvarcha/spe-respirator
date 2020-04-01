@@ -33,3 +33,7 @@ void Board::sleep(unsigned long ms) {
 void Board::setDigitalWrite(uint8_t pin, uint8_t mode) {
     digitalWrite(pin, mode);
 }
+
+int Board::getAnalogRead(uint8_t pin) {
+    return analogRead(pin);
+}
