@@ -5,6 +5,11 @@
 #include "Board.h"
 #include "Arduino.h"
 
+/**
+ * Sets a pin's mode
+ * @param pin
+ * @param mode
+ */
 void Board::setPinMode(int pin, int mode) {
     pinMode(pin, mode);
 }

@@ -9,6 +9,9 @@
 #include "Debug.h"
 #include "Board.h"
 
+/**
+ * Represents an Input button type of pin
+ */
 class InputButton : public Pin {
 public:
     InputButton(Debug *, Board *, const char *name, int pin, int mode);

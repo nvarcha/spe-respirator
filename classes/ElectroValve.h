@@ -9,6 +9,9 @@
 #include "Debug.h"
 #include "Pin.h"
 
+/**
+ * Represents an ElectroValve connected to a pin
+ */
 class ElectroValve : public Pin {
 public:
     ElectroValve(Debug *debug, Board *board, const char *name, int pin, int mode);

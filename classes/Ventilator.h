@@ -8,6 +8,10 @@
 #include "ElectroValve.h"
 #include "Debug.h"
 
+/**
+ * Main Ventilator class. Represents the ventilator in its
+ * entirety
+ */
 class Ventilator {
 public:
     Ventilator(Debug *debug, Board *board);

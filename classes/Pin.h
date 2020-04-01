@@ -8,6 +8,10 @@
 #include "Debug.h"
 #include "Board.h"
 
+/**
+ * Main class representing each Board's pin
+ * Most importantly, a pin number and a mode
+ */
 class Pin {
 public:
     Pin(Debug *debug, Board *board, const char *name, int pin, int mode);

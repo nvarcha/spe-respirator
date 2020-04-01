@@ -13,9 +13,9 @@ Ventilator ventilator(&debug, &board);
  * This is where everything begins, like the `main` function
  */
 void setup() {
-    debug.initialize();
-    debug.log("Initializing Ventilator Project - v0.1.0");
-    debug.log("https://github.com/nvarcha/respirator");
+    debug.init();
+    debug.log("Initializing Project - Ventilator - v0.1.0");
+    debug.log("https://nvarcha@bitbucket.org/nvarcha/ventilator.git");
 
     ventilator.init();
 

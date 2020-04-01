@@ -7,6 +7,9 @@
 
 #include "Arduino.h"
 
+/**
+ * Represents the Arduino board interface
+ */
 class Board {
 public:
     void setPinMode(int pin, int mode);

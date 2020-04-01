@@ -5,37 +5,47 @@
 #include "Arduino.h"
 #include "Debug.h"
 
-void Debug::initialize() {
+/**
+ * Initializes the class
+ */
+void Debug::init() {
 #ifdef DEBUG
     // Initialize serial object
     Serial.begin(9600);
 #endif
 }
 
-void Debug::log(const char *text) {
-#ifdef DEBUG
-    Serial.println(text);
-#endif
-}
-
+/**
+ * Logs with a bool
+ * @param value
+ */
 void Debug::log(bool value) {
 #ifdef DEBUG
     Serial.println(value);
 #endif
 }
 
+/**
+ * Logs an int value
+ * @param value
+ */
 void Debug::log(int value) {
 #ifdef DEBUG
     Serial.println(value);
 #endif
 }
 
-void Debug::flog(const char *format, ...) {
+/**
+ * Logs with a printf format style
+ * @param format
+ * @param ...
+ */
+void Debug::log(const char *format, ...) {
     char formatted_string[1000];
 
     va_list argptr;
     va_start(argptr, format);
-    sprintf(formatted_string, format, argptr);
+    vsprintf(formatted_string, format, argptr);
     va_end(argptr);
 
 #ifdef DEBUG
