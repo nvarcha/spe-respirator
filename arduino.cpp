@@ -21,7 +21,11 @@ void setup() {
     debug.log("******************************************************************");
     debug.log("******************************************************************");
 
+    // Initialize
     ventilator.init();
+
+    // Run diagnostics
+    ventilator.runDiagnostics();
 
     //ventilator.oxigen_intake = ElectroValve(&debug, &board, "O2 intake", 11, OUTPUT);
     // Configure the following pins as output pins

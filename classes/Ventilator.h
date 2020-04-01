@@ -21,6 +21,12 @@ public:
     void init();
 
     /**
+     * Executes a full diagnostic loop
+     * @return true if all ok, false if any error
+     */
+    bool runDiagnostics();
+
+    /**
      * Main loop called from Arduino's cycle
      */
     void loop();
@@ -33,6 +39,7 @@ public:
 private:
     Board *m_board;
     Debug *m_debug;
+    bool m_diagnostic_errors;
 };
 
 
