@@ -12,6 +12,8 @@
 Ventilator::Ventilator(Debug *debug, Board *board) {
     m_debug = debug;
     m_board = board;
+    oxigen_intake = NULL;
+    start_stop = NULL;
 }
 
 /**
@@ -22,6 +24,21 @@ void Ventilator::init() {
     oxigen_intake = new ElectroValve(m_debug, m_board, "O2 intake", 11, OUTPUT);
     oxigen_intake->init();
 
-    start_stop = new InputButton(m_debug, m_board, "Start/Stop", 2, INPUT_PULLUP);
+    start_stop = new StartStopInputButton(m_debug, m_board, "Start/Stop", 2, INPUT_PULLUP);
     start_stop->init();
+}
+
+/**
+ * Main loop called from Arduino's cycle
+ */
+void Ventilator::loop() {
+    if (!start_stop->IsOn()) {
+        return;
+    }
+
+    // TEMP
+    oxigen_intake->open();
+    m_board->sleep(1000);
+    oxigen_intake->close();
+    m_board->sleep(1000);
 }

@@ -8,6 +8,7 @@
 #include "ElectroValve.h"
 #include "InputButton.h"
 #include "Debug.h"
+#include "StartStopInputButton.h"
 
 /**
  * Main Ventilator class. Represents the ventilator in its
@@ -17,8 +18,16 @@ class Ventilator {
 public:
     Ventilator(Debug *debug, Board *board);
     void init();
+
+    /**
+     * Main loop called from Arduino's cycle
+     */
+    void loop();
+
+    // Parts
     ElectroValve *oxigen_intake;
-    InputButton *start_stop;
+    StartStopInputButton *start_stop;
+
 private:
     Board *m_board;
     Debug *m_debug;

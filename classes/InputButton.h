@@ -5,17 +5,20 @@
 #ifndef VENTILATOR_INPUTBUTTON_H
 #define VENTILATOR_INPUTBUTTON_H
 
-#include "Pin.h"
-#include "Debug.h"
 #include "Board.h"
+#include "Debug.h"
+#include "Pin.h"
 
 /**
  * Represents an Input button type of pin
  */
 class InputButton : public Pin {
 public:
-    InputButton(Debug *, Board *, const char *name, int pin, int mode);
-    void init() override;
+    InputButton(Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode);
+    virtual void init(void (*callback)());
+
+protected:
+    void (*m_callback)(){};
 };
 
 

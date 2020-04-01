@@ -14,7 +14,7 @@
  */
 class ElectroValve : public Pin {
 public:
-    ElectroValve(Debug *debug, Board *board, const char *name, int pin, int mode);
+    ElectroValve(Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode);
     void init() override;
     void open();
     void close();

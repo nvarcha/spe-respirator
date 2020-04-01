@@ -14,8 +14,8 @@
  * @param pin
  * @param mode
  */
-ElectroValve::ElectroValve(Debug *debug, Board *board, const char *name, int pin, int mode) : Pin(debug, board, name,
-                                                                                                  pin, mode) {
+ElectroValve::ElectroValve(Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode) : Pin(debug, board, name,
+                                                                                                          pin, mode) {
 }
 
 /**
@@ -31,6 +31,8 @@ void ElectroValve::init() {
  * Closes the valve
  */
 void ElectroValve::close() {
+    m_debug->log("Closing EV %s", m_name);
+    m_board->setDigitalWrite(m_pin, LOW);
     m_opened = false;
 }
 
@@ -38,6 +40,8 @@ void ElectroValve::close() {
  * Opens the valve
  */
 void ElectroValve::open() {
+    m_debug->log("Opening EV %s", m_name);
+    m_board->setDigitalWrite(m_pin, HIGH);
     m_opened = true;
 }
 

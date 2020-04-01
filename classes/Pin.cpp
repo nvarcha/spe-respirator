@@ -12,7 +12,7 @@
  * @param pin
  * @param mode
  */
-Pin::Pin(Debug *debug, Board *board, const char *name, int pin, int mode) {
+Pin::Pin(Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode) {
     m_name = name;
     m_debug = debug;
     m_board = board;

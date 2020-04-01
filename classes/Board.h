@@ -12,7 +12,16 @@
  */
 class Board {
 public:
-    void setPinMode(int pin, int mode);
+    void setPinMode(uint8_t pin, uint8_t mode);
+    void setAttachInterrupt(uint8_t pin, void (*callback)(), uint8_t event);
+    bool isPinLow(uint8_t pin);
+    void setDigitalWrite(uint8_t pin, uint8_t mode);
+
+    /**
+     * Delays execution (calls Arduino's delay)
+     * @param ms
+     */
+    void sleep(unsigned long ms);
 };
 
 

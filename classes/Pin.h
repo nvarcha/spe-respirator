@@ -5,8 +5,8 @@
 #ifndef VENTILATOR_PIN_H
 #define VENTILATOR_PIN_H
 
-#include "Debug.h"
 #include "Board.h"
+#include "Debug.h"
 
 /**
  * Main class representing each Board's pin
@@ -14,8 +14,7 @@
  */
 class Pin {
 public:
-    Pin(Debug *debug, Board *board, const char *name, int pin, int mode);
-
+    Pin(Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode);
     virtual void init();
 
 protected:

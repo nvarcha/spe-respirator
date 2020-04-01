@@ -39,6 +39,6 @@ void setup() {
  * Arduino main loop, called repeatedly
  */
 void loop() {
-
+    ventilator.loop();
 }
 
