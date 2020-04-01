@@ -15,6 +15,7 @@
 class InputButton : public Pin {
 public:
     InputButton(Debug *, Board *, const char *name, int pin, int mode);
+    void init() override;
 };
 
 

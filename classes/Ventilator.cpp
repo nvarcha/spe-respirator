@@ -21,4 +21,7 @@ void Ventilator::init() {
     m_debug->log("Initializing Ventilator Class");
     oxigen_intake = new ElectroValve(m_debug, m_board, "O2 intake", 11, OUTPUT);
     oxigen_intake->init();
+
+    start_stop = new InputButton(m_debug, m_board, "Start/Stop", 2, INPUT_PULLUP);
+    start_stop->init();
 }

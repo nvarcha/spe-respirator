@@ -6,6 +6,7 @@
 #define VENTILATOR_VENTILATOR_H
 
 #include "ElectroValve.h"
+#include "InputButton.h"
 #include "Debug.h"
 
 /**
@@ -17,6 +18,7 @@ public:
     Ventilator(Debug *debug, Board *board);
     void init();
     ElectroValve *oxigen_intake;
+    InputButton *start_stop;
 private:
     Board *m_board;
     Debug *m_debug;

@@ -19,6 +19,15 @@ ElectroValve::ElectroValve(Debug *debug, Board *board, const char *name, int pin
 }
 
 /**
+ * Initializes the class
+ */
+void ElectroValve::init() {
+    m_debug->log("Initializing Electrovalve %s", m_name);
+    Pin::init();
+    m_board->setPinMode(m_pin, m_mode);
+}
+
+/**
  * Closes the valve
  */
 void ElectroValve::close() {
@@ -39,13 +48,3 @@ void ElectroValve::open() {
 bool ElectroValve::isOpen() {
     return m_opened;
 }
-
-/**
- * Initializes the class
- */
-void ElectroValve::init() {
-    Pin::init();
-    m_debug->log("Initializing Electrovalve %s", m_name);
-    m_board->setPinMode(m_pin, m_mode);
-}
-

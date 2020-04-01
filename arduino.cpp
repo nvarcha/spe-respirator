@@ -14,8 +14,12 @@ Ventilator ventilator(&debug, &board);
  */
 void setup() {
     debug.init();
+    debug.log("******************************************************************");
+    debug.log("******************************************************************");
     debug.log("Initializing Project - Ventilator - v0.1.0");
     debug.log("https://nvarcha@bitbucket.org/nvarcha/ventilator.git");
+    debug.log("******************************************************************");
+    debug.log("******************************************************************");
 
     ventilator.init();
 
