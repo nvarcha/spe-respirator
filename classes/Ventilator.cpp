@@ -88,3 +88,11 @@ bool Ventilator::runDiagnostics() {
     m_debug->log("Diagnostics finished. Result: %d", m_diagnostic_errors);
     return m_diagnostic_errors;
 }
+
+/**
+ * Returns whether there were diagnostic errors during the diagnostic tests
+ * @return
+ */
+bool Ventilator::HasDiagnosticErrors() {
+    return m_diagnostic_errors;
+}

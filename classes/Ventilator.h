@@ -31,6 +31,8 @@ public:
      */
     void loop();
 
+    bool HasDiagnosticErrors();
+
     // Parts
     ElectroValve *oxigen_intake;
     AnalogInput *oxigen_intake_sensor;
