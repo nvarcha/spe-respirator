@@ -1,6 +1,6 @@
 # Automatic Bag Valve Ventilator #
 
-(Versión en Español más abajo)
+(Para información en español contactarse via Issues de GitHub - La agregaremos en breve)
 
 This is the main repository for the Automatic Bag Valve Ventilator.
 
@@ -14,6 +14,7 @@ The goal of the project is to be able to develop a cheap, easy to manufacture an
 
 ## Status ##
 April 3 2020
+
 We have the design completed and have sent all parts to production.
 
 We're also working on the software for the Arduino controller.
