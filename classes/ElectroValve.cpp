@@ -24,6 +24,7 @@ ElectroValve::ElectroValve(Debug *debug, Board *board, const char *name, uint8_t
 void ElectroValve::init() {
     m_debug->log("Initializing Electrovalve %s", m_name);
     Pin::init();
+    this->close();
 }
 
 /**
