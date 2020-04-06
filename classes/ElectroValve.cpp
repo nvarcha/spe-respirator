@@ -2,6 +2,7 @@
 // Created by Nicolas Varchavsky on 3/31/20.
 //
 
+#include "Arduino.h"
 #include "ElectroValve.h"
 #include "Board.h"
 #include "Debug.h"
@@ -51,4 +52,16 @@ void ElectroValve::open() {
  */
 bool ElectroValve::isOpen() {
     return m_opened;
+}
+
+/**
+ * Open the electrovalve for the given amount of milliseconds
+ * and then automatically closes it after the given tie
+ * @param millis
+ */
+void ElectroValve::openFor(unsigned long millis) {
+    // Attach interrupt on timer to close
+
+    // Open
+    this->open();
 }

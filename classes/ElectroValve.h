@@ -17,6 +17,14 @@ public:
     ElectroValve(Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode);
     void init() override;
     void open();
+
+    /**
+     * Open the electrovalve for the given amount of milliseconds
+     * and then automatically closes it after the given tie
+     * @param millis
+     */
+    void openFor(unsigned long millis);
+
     void close();
     bool isOpen();
 private:
