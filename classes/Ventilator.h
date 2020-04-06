@@ -42,6 +42,11 @@ private:
     Board *m_board;
     Debug *m_debug;
     bool m_diagnostic_errors;
+
+    int m_breaths_per_minute;
+
+    // Indicates if this is the first run of the loop
+    bool m_first_run;
 };
 
 

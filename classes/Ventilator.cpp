@@ -32,6 +32,10 @@ void Ventilator::init() {
     oxigen_intake_sensor = new AnalogInput(m_debug, m_board, "O2 intake Sensor", A5, INPUT);
     oxigen_intake_sensor->init();
 
+    // TEMP: We will actually read from the knob
+    m_breaths_per_minute = 30;
+
+    m_first_run = true;
     m_debug->log("Ventilator initialization done");
 }
 
@@ -39,15 +43,31 @@ void Ventilator::init() {
  * Main loop called from Arduino's cycle
  */
 void Ventilator::loop() {
+
+    // Skip main loop if we have diagnostic errors, we don't want this working if there are errors
     if (m_diagnostic_errors) {
         return;
     }
 
+    // Check if ON switch is on
     if (!start_stop->IsOn()) {
         return;
     }
 
     m_debug->log("Start stop? %d", start_stop->IsOn());
+
+    // Is this the first run?
+    if (m_first_run) {
+        // Close all valves
+        // Move actuator all the way up (rotate until stop-sensor)
+
+        // Flag off
+        m_first_run = false;
+    }
+
+    // Open EV1 (o2 valve) for
+    // Check we're sensing O2 flowing through, if not, send alarm
+    //
 
     // TEMP
     oxigen_intake->open();
