@@ -10,6 +10,7 @@
 #include "Debug.h"
 #include "StartStopInputButton.h"
 #include "AnalogInput.h"
+#include "Alarm.h"
 
 /**
  * Main Ventilator class. Represents the ventilator in its
@@ -41,6 +42,7 @@ public:
 private:
     Board *m_board;
     Debug *m_debug;
+    Alarm *m_alarm;
     bool m_diagnostic_errors;
 
     int m_breaths_per_minute;

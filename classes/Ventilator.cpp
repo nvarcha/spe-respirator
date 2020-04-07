@@ -23,6 +23,10 @@ Ventilator::Ventilator(Debug *debug, Board *board) {
  */
 void Ventilator::init() {
     m_debug->log("Initializing Ventilator Class");
+
+    // Initialize Alarm system
+    m_alarm = new Alarm(m_debug);
+
     oxigen_intake = new ElectroValve(m_debug, m_board, "O2 intake", 11, OUTPUT);
     oxigen_intake->init();
 
