@@ -7,8 +7,6 @@
 #include "Board.h"
 #include "Debug.h"
 
-volatile ElectroValve *interruptWrapper;
-
 /**
  * Constructor
  * @param debug
@@ -19,7 +17,6 @@ volatile ElectroValve *interruptWrapper;
  */
 ElectroValve::ElectroValve(Parameters* parameters, Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode) : Pin(debug, board, name,
                                                                                                           pin, mode) {
-    interruptWrapper = this;
 }
 
 /**
@@ -29,7 +26,7 @@ void ElectroValve::init() {
     m_debug->log("Initializing Electrovalve %s", m_name);
     Pin::init();
     this->close();
-    m_timer1.initialize(10000);
+    m_openFor = 0;
 }
 
 /**
@@ -58,21 +55,29 @@ bool ElectroValve::isOpen() {
     return m_opened;
 }
 
-void timerInterrupt() {
-    interruptWrapper->close();
-}
-
 /**
  * Open the electrovalve for the given amount of milliseconds
  * and then automatically closes it after the given tie
  * @param millis
  */
-void ElectroValve::openFor(unsigned long millis) {
-    // Attach interrupt on timer to close
-    m_timer1.setPeriod(millis);
-    m_timer1.attachInterrupt(timerInterrupt);
+void ElectroValve::openFor(unsigned long millisToOpenFor) {
+
+    m_openFor = millisToOpenFor;
+    m_openTime = millis();
 
     // Open
     this->open();
 }
 
+void ElectroValve::update() {
+    // If this is running with `openFor`, check if we should close
+    if (m_openFor > 0) {
+        if (millis() - m_openTime >= m_openFor) {
+            // Unflag
+            m_openFor = 0;
+
+            // Close
+            this->close();
+        }
+    }
+}
