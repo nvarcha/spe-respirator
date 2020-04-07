@@ -4,7 +4,7 @@
 
 #include "StartStopInputButton.h"
 
-StartStopInputButton* startStopInputButton;
+volatile StartStopInputButton* startStopInputButton;
 
 /**
  * This is a wrapper to be able to use the class' member method
@@ -19,7 +19,7 @@ void StartStopInputButton::init() {
     InputButton::init(interruptWrapper);
 }
 
-void StartStopInputButton::interruptMethod() {
+void StartStopInputButton::interruptMethod() volatile {
     m_debug->log("Calling interrupt method. Is Powered before? %d", m_poweredOn);
     m_poweredOn = m_board->isPinLow(m_pin);
     m_debug->log("Is Powered after? %d", m_poweredOn);

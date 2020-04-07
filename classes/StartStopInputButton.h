@@ -12,7 +12,7 @@ class StartStopInputButton : public InputButton {
 public:
     StartStopInputButton(Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode);
     void init();
-    void interruptMethod();
+    void interruptMethod() volatile;
     bool IsOn();
 
 protected:
