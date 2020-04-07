@@ -12,13 +12,24 @@
 #include "AnalogInput.h"
 #include "Alarm.h"
 
+enum VENTILATOR_STATE {
+    DIAGNOSTICS,
+    FIRST_RUN,
+    RUNNING,
+    SHUTTING_DOWN
+};
+
+enum VENTILATOR_RUNNING_PROCESS {
+
+};
+
 /**
  * Main Ventilator class. Represents the ventilator in its
  * entirety
  */
 class Ventilator {
 public:
-    Ventilator(Debug *debug, Board *board);
+    Ventilator(Parameters* parameters, Debug *debug, Board *board);
     void init();
 
     /**
@@ -40,6 +51,7 @@ public:
     StartStopInputButton *start_stop;
 
 private:
+    Parameters *m_parameters;
     Board *m_board;
     Debug *m_debug;
     Alarm *m_alarm;

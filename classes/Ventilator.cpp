@@ -9,7 +9,8 @@
  * @param debug
  * @param board
  */
-Ventilator::Ventilator(Debug *debug, Board *board) {
+Ventilator::Ventilator(Parameters* parameters, Debug *debug, Board *board) {
+    m_parameters = parameters;
     m_debug = debug;
     m_board = board;
     oxigen_intake = nullptr;
@@ -27,7 +28,7 @@ void Ventilator::init() {
     // Initialize Alarm system
     m_alarm = new Alarm(m_debug);
 
-    oxigen_intake = new ElectroValve(m_debug, m_board, "O2 intake", 11, OUTPUT);
+    oxigen_intake = new ElectroValve(m_parameters, m_debug, m_board, "O2 intake", 11, OUTPUT);
     oxigen_intake->init();
 
     start_stop = new StartStopInputButton(m_debug, m_board, "Start/Stop", 2, INPUT_PULLUP);
@@ -69,16 +70,20 @@ void Ventilator::update() {
         m_first_run = false;
     }
 
-    // Open EV1 (o2 valve) for
+    // Run update on all valves
+    oxigen_intake->update();
+
+    // Open EV1 (o2 valve) for 5 seconds
+    oxigen_intake->openFor(5000);
     // Check we're sensing O2 flowing through, if not, send alarm
     //
 
     // TEMP
-    oxigen_intake->open();
-    m_board->sleep(1000);
-    oxigen_intake->close();
-    m_board->sleep(1000);
-    m_debug->log("Intake: %d", oxigen_intake_sensor->getValue());
+//    oxigen_intake->open();
+//    m_board->sleep(1000);
+//    oxigen_intake->close();
+//    m_board->sleep(1000);
+//    m_debug->log("Intake: %d", oxigen_intake_sensor->getValue());
 }
 
 /**
@@ -91,8 +96,10 @@ bool Ventilator::runDiagnostics() {
 
     // TEST O2 intake
     // Open O2 valve and wait
-    oxigen_intake->open();
-    m_board->sleep(1000);
+//    oxigen_intake->open();
+//    m_board->sleep(1000);
+
+    oxigen_intake->openFor(15000);
 
     // Check O2 flowmeter
     if (oxigen_intake_sensor->getValue() >= 300) {
@@ -102,7 +109,7 @@ bool Ventilator::runDiagnostics() {
     }
 
     // Close O2 valve
-    oxigen_intake->close();
+//    oxigen_intake->close();
 
     // TODO: For whatever reason, calling m_debug->log inside the `if` breaks everything... WTF?
     if (m_diagnostic_errors) {
