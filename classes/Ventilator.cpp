@@ -44,11 +44,11 @@ void Ventilator::init() {
 }
 
 /**
- * Main loop called from Arduino's cycle
+ * Main update called from Arduino's cycle
  */
-void Ventilator::loop() {
+void Ventilator::update() {
 
-    // Skip main loop if we have diagnostic errors, we don't want this working if there are errors
+    // Skip main update if we have diagnostic errors, we don't want this working if there are errors
     if (m_diagnostic_errors) {
         return;
     }
@@ -82,7 +82,7 @@ void Ventilator::loop() {
 }
 
 /**
- * Executes a full diagnostic loop
+ * Executes a full diagnostic run
  * @return true if all ok, false if any error
  */
 bool Ventilator::runDiagnostics() {

@@ -28,9 +28,9 @@ void setup() {
 }
 
 /**
- * Arduino main loop, called repeatedly
+ * Arduino main update, called repeatedly
  */
 void loop() {
-    ventilator.loop();
+    ventilator.update();
 }
 

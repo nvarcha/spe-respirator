@@ -22,15 +22,15 @@ public:
     void init();
 
     /**
-     * Executes a full diagnostic loop
+     * Executes a full diagnostic run
      * @return true if all ok, false if any error
      */
     bool runDiagnostics();
 
     /**
-     * Main loop called from Arduino's cycle
+     * Main update called from Arduino's cycle
      */
-    void loop();
+    void update();
 
     bool HasDiagnosticErrors();
 
@@ -47,7 +47,7 @@ private:
 
     int m_breaths_per_minute;
 
-    // Indicates if this is the first run of the loop
+    // Indicates if this is the first run of the update
     bool m_first_run;
 };
 
