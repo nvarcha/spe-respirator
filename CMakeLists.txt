@@ -8,33 +8,14 @@ set(${PROJECT_NAME}_BOARD uno)
 project(${PROJECT_NAME})
 
 # Define additional source and header files or default arduino sketch files
- set(${PROJECT_NAME}_SRCS
-         arduino.cpp
-         classes/ElectroValve.cpp
-         classes/Debug.cpp
-         classes/Ventilator.cpp
-         classes/Board.cpp
-         classes/Pin.cpp
-         classes/InputButton.cpp
-         classes/StartStopInputButton.cpp
-         classes/AnalogInput.cpp
-         )
- set(${PROJECT_NAME}_HDRS
-         classes/ElectroValve.h
-         classes/Debug.h
-         classes/Ventilator.h
-         classes/Board.h
-         classes/Pin.h
-         classes/InputButton.h
-         classes/StartStopInputButton.h
-         classes/AnalogInput.h
-         )
+set(${PROJECT_NAME}_SRCS arduino.cpp classes/ElectroValve.cpp classes/Debug.cpp classes/Ventilator.cpp classes/Board.cpp classes/Pin.cpp classes/InputButton.cpp classes/StartStopInputButton.cpp classes/AnalogInput.cpp classes/Alarm.cpp classes/Parameters.cpp modules/TimerOne-master/TimerOne.cpp)
+set(${PROJECT_NAME}_HDRS classes/ElectroValve.h classes/Debug.h classes/Ventilator.h classes/Board.h classes/Pin.h classes/InputButton.h classes/StartStopInputButton.h classes/AnalogInput.h classes/Alarm.h classes/Parameters.h modules/TimerOne-master/TimerOne.h)
 
 ### Additional static libraries to include in the target.
 # set(${PROJECT_NAME}_LIBS)
 
 ### Main sketch file
-#set(${PROJECT_NAME}_SKETCH ventilator.cpp)
+# set(${PROJECT_NAME}_SKETCH ventilator.ino)
 
 ### Add project directories into the build
 # add_subdirectory()
@@ -50,7 +31,7 @@ project(${PROJECT_NAME})
 
 #### Additional settings for programmer. From programmers.txt
 # set(${PROJECT_NAME}_PROGRAMMER avrispmkii)
-set(${PROJECT_NAME}_PORT /dev/cu.usbmodem1412201)
+set(${PROJECT_NAME}_PORT /dev/cu.usbmodem1422301)
 # set(uno.upload.speed 9600)
 
 ## Verbose build process
