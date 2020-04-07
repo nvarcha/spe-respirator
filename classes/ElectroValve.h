@@ -27,7 +27,7 @@ public:
      */
     void openFor(unsigned long millis);
 
-    void close();
+    void close() volatile;
     bool isOpen();
 private:
     bool m_opened;

@@ -7,7 +7,7 @@
 #include "Board.h"
 #include "Debug.h"
 
-ElectroValve *interruptWrapper;
+volatile ElectroValve *interruptWrapper;
 
 /**
  * Constructor
@@ -35,7 +35,7 @@ void ElectroValve::init() {
 /**
  * Closes the valve
  */
-void ElectroValve::close() {
+void ElectroValve::close() volatile {
     m_debug->log("Closing EV %s", m_name);
     m_board->setDigitalWrite(m_pin, LOW);
     m_opened = false;
