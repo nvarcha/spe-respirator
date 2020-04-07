@@ -5,7 +5,8 @@
 
 Debug debug;
 Board board;
-Ventilator ventilator(&debug, &board);
+Parameters parameters;
+Ventilator ventilator(&parameters, &debug, &board);
 
 /**
  * Arduino setup - runs only once
