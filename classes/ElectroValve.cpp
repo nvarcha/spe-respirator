@@ -7,6 +7,8 @@
 #include "Board.h"
 #include "Debug.h"
 
+ElectroValve *interruptWrapper;
+
 /**
  * Constructor
  * @param debug
@@ -15,8 +17,9 @@
  * @param pin
  * @param mode
  */
-ElectroValve::ElectroValve(Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode) : Pin(debug, board, name,
+ElectroValve::ElectroValve(Parameters* parameters, Debug *debug, Board *board, const char *name, uint8_t pin, uint8_t mode) : Pin(debug, board, name,
                                                                                                           pin, mode) {
+    interruptWrapper = this;
 }
 
 /**
@@ -26,6 +29,7 @@ void ElectroValve::init() {
     m_debug->log("Initializing Electrovalve %s", m_name);
     Pin::init();
     this->close();
+    m_timer1.initialize(10000);
 }
 
 /**
@@ -54,6 +58,10 @@ bool ElectroValve::isOpen() {
     return m_opened;
 }
 
+void timerInterrupt() {
+    interruptWrapper->close();
+}
+
 /**
  * Open the electrovalve for the given amount of milliseconds
  * and then automatically closes it after the given tie
@@ -61,7 +69,10 @@ bool ElectroValve::isOpen() {
  */
 void ElectroValve::openFor(unsigned long millis) {
     // Attach interrupt on timer to close
+    m_timer1.setPeriod(millis);
+    m_timer1.attachInterrupt(timerInterrupt);
 
     // Open
     this->open();
 }
+
